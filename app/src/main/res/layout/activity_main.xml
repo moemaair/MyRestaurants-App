@@ -23,8 +23,9 @@
         android:layout_marginTop="35dp"
         android:text="MyRestaurants"
         android:textColor="@color/colorTextIcons"
-        android:textSize="40sp"
+        android:textSize="50sp"
         android:textStyle="bold" />
+
 
     <EditText
         android:id="@+id/locationEditText"
@@ -35,9 +36,10 @@
         android:layout_marginBottom="10dp"
         android:background="@color/colorTextIcons"
         android:hint="Enter Zip Code"
-        android:textColorHint="@color/colorSecondaryText"
-        android:paddingVertical="20dp"
-        android:paddingHorizontal="40dp"/>
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="15dp"
+        android:textColor="@color/colorPrimaryText"
+        android:textColorHint="@color/colorSecondaryText" />
 
     <Button
         android:id="@+id/findRestaurantsButton"
@@ -46,6 +48,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@color/colorAccent"
+        android:fontFamily="cursive"
         android:text="Find Restaurants"
         android:textColor="@color/colorTextIcons" />
 
