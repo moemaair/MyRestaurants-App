@@ -1,0 +1,107 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.moringaschool.myrestaurants"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:5:5-66
+11-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:5:22-64
+12
+13    <application
+13-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:7:5-36:19
+14        android:allowBackup="true"
+14-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:8:9-35
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.7.0] /Users/maair/.gradle/caches/transforms-3/d79cd730aff89e16bbe6bbee05f6ceb1/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+16        android:debuggable="true"
+17        android:icon="@mipmap/ic_launcher"
+17-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:9:9-43
+18        android:label="@string/app_name"
+18-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:10:9-41
+19        android:roundIcon="@mipmap/ic_launcher_round"
+19-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:11:9-54
+20        android:supportsRtl="true"
+20-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:12:9-35
+21        android:testOnly="true"
+22        android:theme="@style/AppTheme" >
+22-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:13:9-40
+23        <activity
+23-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:15:9-21:20
+24            android:name="com.moringaschool.myrestaurants.ui.RestaurantActivity"
+24-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:15:19-56
+25            android:exported="true" >
+25-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:16:13-36
+26            <meta-data
+26-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:17:13-20:25
+27                android:name="android.support.PARENT_ACTIVITY"
+27-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:18:17-63
+28                android:value="com.moringaschool.myrestaurants.ui.MainActivity" >
+28-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:19:17-80
+29            </meta-data>
+30        </activity>
+31        <activity
+31-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:23:9-31:20
+32            android:name="com.moringaschool.myrestaurants.ui.MainActivity"
+32-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:24:13-44
+33            android:exported="true"
+33-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:25:13-36
+34            android:theme="@style/NoActionBarTheme" >
+34-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:26:13-52
+35            <intent-filter>
+35-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:27:13-30:29
+36                <action android:name="android.intent.action.MAIN" />
+36-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:28:17-69
+36-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:28:25-66
+37
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:29:17-77
+38-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:29:27-74
+39            </intent-filter>
+40        </activity>
+41
+42        <meta-data
+42-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:33:9-35:57
+43            android:name="preloaded_fonts"
+43-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:34:13-43
+44            android:resource="@array/preloaded_fonts" />
+44-->/Users/maair/AndroidStudioProjects/MyRestaurants/app/src/main/AndroidManifest.xml:35:13-54
+45
+46        <provider
+46-->[com.squareup.picasso:picasso:2.71828] /Users/maair/.gradle/caches/transforms-3/d54ac8c0cf52efb0d57c6a4c9f37ae08/transformed/picasso-2.71828/AndroidManifest.xml:8:9-11:40
+47            android:name="com.squareup.picasso.PicassoProvider"
+47-->[com.squareup.picasso:picasso:2.71828] /Users/maair/.gradle/caches/transforms-3/d54ac8c0cf52efb0d57c6a4c9f37ae08/transformed/picasso-2.71828/AndroidManifest.xml:9:13-64
+48            android:authorities="com.moringaschool.myrestaurants.com.squareup.picasso"
+48-->[com.squareup.picasso:picasso:2.71828] /Users/maair/.gradle/caches/transforms-3/d54ac8c0cf52efb0d57c6a4c9f37ae08/transformed/picasso-2.71828/AndroidManifest.xml:10:13-72
+49            android:exported="false" />
+49-->[com.squareup.picasso:picasso:2.71828] /Users/maair/.gradle/caches/transforms-3/d54ac8c0cf52efb0d57c6a4c9f37ae08/transformed/picasso-2.71828/AndroidManifest.xml:11:13-37
+50        <provider
+50-->[androidx.emoji2:emoji2:1.0.0] /Users/maair/.gradle/caches/transforms-3/7a8fe7a0d27e6111d8f26a88e3f3f946/transformed/emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+51            android:name="androidx.startup.InitializationProvider"
+51-->[androidx.emoji2:emoji2:1.0.0] /Users/maair/.gradle/caches/transforms-3/7a8fe7a0d27e6111d8f26a88e3f3f946/transformed/emoji2-1.0.0/AndroidManifest.xml:27:13-67
+52            android:authorities="com.moringaschool.myrestaurants.androidx-startup"
+52-->[androidx.emoji2:emoji2:1.0.0] /Users/maair/.gradle/caches/transforms-3/7a8fe7a0d27e6111d8f26a88e3f3f946/transformed/emoji2-1.0.0/AndroidManifest.xml:28:13-68
+53            android:exported="false" >
+53-->[androidx.emoji2:emoji2:1.0.0] /Users/maair/.gradle/caches/transforms-3/7a8fe7a0d27e6111d8f26a88e3f3f946/transformed/emoji2-1.0.0/AndroidManifest.xml:29:13-37
+54            <meta-data
+54-->[androidx.emoji2:emoji2:1.0.0] /Users/maair/.gradle/caches/transforms-3/7a8fe7a0d27e6111d8f26a88e3f3f946/transformed/emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+55                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+55-->[androidx.emoji2:emoji2:1.0.0] /Users/maair/.gradle/caches/transforms-3/7a8fe7a0d27e6111d8f26a88e3f3f946/transformed/emoji2-1.0.0/AndroidManifest.xml:32:17-75
+56                android:value="androidx.startup" />
+56-->[androidx.emoji2:emoji2:1.0.0] /Users/maair/.gradle/caches/transforms-3/7a8fe7a0d27e6111d8f26a88e3f3f946/transformed/emoji2-1.0.0/AndroidManifest.xml:33:17-49
+57            <meta-data
+57-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/maair/.gradle/caches/transforms-3/7c2b991ffee7d4db452bfe70f5605b71/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+58                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+58-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/maair/.gradle/caches/transforms-3/7c2b991ffee7d4db452bfe70f5605b71/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+59                android:value="androidx.startup" />
+59-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/maair/.gradle/caches/transforms-3/7c2b991ffee7d4db452bfe70f5605b71/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+60        </provider>
+61    </application>
+62
+63</manifest>
