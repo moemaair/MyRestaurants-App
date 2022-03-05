@@ -1,43 +1,44 @@
-package com.moringaschool.myrestaurants;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
+package com.moringaschool.myrestaurants.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.moringaschool.myrestaurants.R;
+import com.moringaschool.myrestaurants.adapters.RestaurantListAdapter;
+import com.moringaschool.myrestaurants.models.Business;
+import com.moringaschool.myrestaurants.models.YelpBusinessesSearchResponse;
+import com.moringaschool.myrestaurants.network.YelpApi;
+import com.moringaschool.myrestaurants.network.YelpClient;
+
 import java.util.List;
-
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RestaurantActivity extends AppCompatActivity {
+    private static final String TAG = RestaurantActivity.class.getSimpleName();
 
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.errorTextView)
+    TextView mErrorTextView;
+    @BindView(R.id.progressBar)
+    ProgressBar mProgressBar;
 
+    private RestaurantListAdapter mAdapter;
 
-    @BindView(R.id.locationTextView) TextView mLocationTextView;
-    @BindView(R.id.listView) ListView mListView;
-
-    //our array
-    private String[] restaurants = new String[] {"Sweet Hereafter", "Cricket", "Hawthorne Fish House", "Viking Soul Food",
-            "Red Square", "Horse Brass", "Dick's Kitchen",
-            "Taco Bell", "Me Kha Noodle Bar", "La Bonita Taqueria", "Smokehouse Tavern", "Pembiche", "Kay's Bar", "Gnarly Grey", "Slappy Cakes", "Mi Mero Mole" };
-    private String[] cuisines = new String[] {"Vegan Food", "Breakfast", "Fishs Dishs", "Scandinavian", "Coffee", "English Food",
-            "Burgers", "Fast Food", "Noodle Soups",
-            "Mexican", "BBQ", "Cuban", "Bar Food", "Sports Bar", "Breakfast", "Mexican" };
-
-    public static final String TAG = RestaurantActivity.class.getSimpleName();
+    public List<Business> restaurants;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,22 +46,60 @@ public class RestaurantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant);
         ButterKnife.bind(this);
 
-
-        myRestaurantsArrayAdapter adapter = new myRestaurantsArrayAdapter(this, android.R.layout.simple_list_item_1, restaurants, cuisines);
-        mListView.setAdapter(adapter);
-
         Intent intent = getIntent();
-        /** recreates the Intent that has just taken us to this new activity.*/
         String location = intent.getStringExtra("location");
-        /** getStringExtra(): Called upon an Intent that has additional data attached to it. If provided an argument representing the string key in
-         the key-value pair described above, it will return the value*/
-        mLocationTextView.setText("Here are all the restaurants near: " + location);
 
-        Log.d(TAG, "worked here lol!");
+        YelpApi client = YelpClient.getClient();
 
+        Call<YelpBusinessesSearchResponse> call = client.getRestaurants(location, "restaurants");
 
+        call.enqueue(new Callback<YelpBusinessesSearchResponse>() {
+            @Override
+            public void onResponse(Call<YelpBusinessesSearchResponse> call, Response<YelpBusinessesSearchResponse> response) {
+                hideProgressBar();
 
+                if (response.isSuccessful()) {
+                    restaurants = response.body().getBusinesses();
+                    Log.d(TAG, "onResponse: this is the response " + restaurants );
 
+                    mAdapter = new RestaurantListAdapter(RestaurantActivity.this, restaurants);
+                    mRecyclerView.setAdapter(mAdapter);
+                    RecyclerView.LayoutManager layoutManager =
+                            new LinearLayoutManager(RestaurantActivity.this);
+                    mRecyclerView.setLayoutManager(layoutManager);
+                    mRecyclerView.setHasFixedSize(true);
 
+                    showRestaurants();
+                } else {
+                    showUnsuccessfulMessage();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<YelpBusinessesSearchResponse> call, Throwable t) {
+                hideProgressBar();
+                Log.e(TAG, "onFailure:" , t );
+                showFailureMessage();
+            }
+
+        });
+    }
+
+    private void showFailureMessage() {
+        mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showUnsuccessfulMessage() {
+        mErrorTextView.setText("Something went wrong. Please try again later");
+        mErrorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showRestaurants() {
+        mRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        mProgressBar.setVisibility(View.GONE);
     }
 }

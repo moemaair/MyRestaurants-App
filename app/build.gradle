@@ -9,7 +9,9 @@ android {
         unitTests {
             includeAndroidResources = true
         }
+
     }
+
 
     defaultConfig {
         applicationId "com.moringaschool.myrestaurants"
@@ -25,6 +27,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        //connect Api credentials when the project builds
+        buildTypes.each {
+            it.buildConfigField 'String', 'YELP_API_KEY', YelpApiKey
         }
     }
     compileOptions {
@@ -49,4 +55,11 @@ dependencies {
     //ButterKnife dependencies
     implementation 'com.jakewharton:butterknife:10.2.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    //Recycler.view
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    //Retrofit and gson
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    //piccasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
